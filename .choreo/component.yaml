@@ -16,6 +16,11 @@
 
 schemaVersion: 1.2
 
+build:
+  docker:
+    dockerfilePath: Dockerfile
+    buildContext: .
+
 endpoints:
   - name: policy-preprocessor
     displayName: Policy Preprocessor
@@ -24,6 +29,8 @@ endpoints:
       port: 6080
     type: REST
     networkVisibilities:
+      - Project
+      - Organization
       - Public
     schemaFilePath: main_openapi.yaml
 
