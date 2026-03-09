@@ -1,0 +1,7 @@
+/data
+/.vscode
+
+.env
+
+README.md
+start-services.sh
