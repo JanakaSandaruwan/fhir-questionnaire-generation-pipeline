@@ -15,6 +15,7 @@ services:
       - ANTHROPIC_GENERATOR_AGENT_AI_GATEWAY_URL=${ANTHROPIC_GENERATOR_AGENT_AI_GATEWAY_URL:-https://api.anthropic.com/v1}
       - ANTHROPIC_REVIEWER_AGENT_AI_GATEWAY_URL=${ANTHROPIC_REVIEWER_AGENT_AI_GATEWAY_URL:-https://api.anthropic.com/v1}
       - AGENT_CONV_LIMIT=${AGENT_CONV_LIMIT:-5}
+      - FHIR_SERVER_URL=${FHIR_SERVER_URL:-http://localhost:9090/fhir/r4}
     volumes:
       - pipeline-data:/app/data
     restart: unless-stopped

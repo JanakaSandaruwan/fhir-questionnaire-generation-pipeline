@@ -84,6 +84,11 @@ COPY fhir_questionnaire_generation/fhir_questionnaire_orchestration/Config.toml 
 # ── Shared data directory ─────────────────────────────────────
 RUN mkdir -p /app/data/pdf /app/data/md /app/data/chunks
 
+# ── Create non-root user ──────────────────────────────────────
+RUN addgroup --gid 10014 appgroup && \
+    adduser --uid 10014 --gid 10014 --disabled-password --gecos "" appuser && \
+    chown -R 10014:10014 /app
+
 # ── Entrypoint ────────────────────────────────────────────────
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
@@ -103,5 +108,7 @@ ENV STORAGE_TYPE=local \
 
 # Only expose the Policy Preprocessor to the outside world
 EXPOSE 6080
+
+USER 10014
 
 ENTRYPOINT ["/app/entrypoint.sh"]
