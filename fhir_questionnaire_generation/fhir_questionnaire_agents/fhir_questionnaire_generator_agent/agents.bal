@@ -138,7 +138,7 @@ Expected output:
   ]
 }
         `
-    }, memory = aiShorttermmemory, model = _QuestionnaireGeneratorModel, tools = [], verbose = true
+    }, memory = aiShorttermmemory, model = _QuestionnaireGeneratorModel, tools = [], verbose = false
 );
 
 final ai:ShortTermMemory aiShorttermmemory = check new ();

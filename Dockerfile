@@ -64,8 +64,8 @@ COPY data_ingestion_pipeline/pdf_to_md_service/ /app/services/pdf-to-md/
 # ── Copy Ballerina JARs + Config.toml ─────────────────────────
 COPY --from=bal-build /build/policy-preprocessor/target/bin/policy_document_chunker.jar \
      /app/services/policy-preprocessor/app.jar
-COPY data_ingestion_pipeline/policy_preprocessor/Config.toml \
-     /app/services/policy-preprocessor/Config.toml
+# COPY data_ingestion_pipeline/policy_preprocessor/Config.toml \
+#      /app/services/policy-preprocessor/Config.toml
 
 COPY --from=bal-build /build/generator-agent/target/bin/fhir_questionnaire_generator.jar \
      /app/services/generator-agent/app.jar
@@ -79,8 +79,8 @@ COPY --from=bal-build /build/reviewer-agent/target/bin/fhir_questionnaire_review
 
 COPY --from=bal-build /build/orchestration/target/bin/fhir_questionnaire_generation.jar \
      /app/services/orchestration/app.jar
-COPY fhir_questionnaire_generation/fhir_questionnaire_orchestration/Config.toml \
-     /app/services/orchestration/Config.toml
+# COPY fhir_questionnaire_generation/fhir_questionnaire_orchestration/Config.toml \
+#      /app/services/orchestration/Config.toml
 
 # ── Shared data directory ─────────────────────────────────────
 RUN mkdir -p /app/data/pdf /app/data/md /app/data/chunks

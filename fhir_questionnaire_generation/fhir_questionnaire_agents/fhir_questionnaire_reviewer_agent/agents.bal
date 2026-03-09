@@ -89,7 +89,7 @@ APPROVED
 
 Do not add any other text, commentary, or formatting when approving.
         `
-    }, memory = aiShorttermmemory, model = _ReviewerModel, tools = [], verbose = true
+    }, memory = aiShorttermmemory, model = _ReviewerModel, tools = [], verbose = false
 );
 
 final ai:ShortTermMemory aiShorttermmemory = check new ();
