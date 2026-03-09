@@ -6,6 +6,9 @@
 
 set -e
 
+echo "=== DEBUG: entrypoint running as $(id) ==="
+echo "=== DEBUG: entrypoint.sh owner: $(ls -la /app/entrypoint.sh) ==="
+
 PIDS=()
 
 cleanup() {
