@@ -5,6 +5,7 @@
 
 # ── Stage 1: Build all four Ballerina services ─────────────────
 FROM ballerina/ballerina:2201.12.10 AS bal-build
+USER root
 
 # Policy Preprocessor
 WORKDIR /build/policy-preprocessor
