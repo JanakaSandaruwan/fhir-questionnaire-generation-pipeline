@@ -5,14 +5,14 @@ WORKDIR /app
 
 RUN mkdir -p /app/data/pdf /app/data/md /app/data/chunks
 
-# Entrypoint (copy BEFORE chown so it gets correct ownership)
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-
-# Create non-root user (chown covers entrypoint.sh now)
+# Create non-root user
 RUN addgroup --gid 10014 appgroup && \
     adduser --uid 10014 --gid 10014 --disabled-password --gecos "" appuser && \
     chown -R 10014:10014 /app
+
+# Entrypoint (copy AFTER chown — file will be owned by root)
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 # Debug: verify ownership
 RUN echo "=== entrypoint.sh ===" && \
