@@ -94,6 +94,17 @@ RUN addgroup --gid 10014 appgroup && \
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 
+# ── Debug: verify what was copied ─────────────────────────────
+RUN echo "========== /app contents ==========" && \
+    find /app -type f | sort && \
+    echo "========== entrypoint.sh ==========" && \
+    ls -la /app/entrypoint.sh && \
+    echo "========== services ==========" && \
+    ls -laR /app/services/ && \
+    echo "========== data ==========" && \
+    ls -laR /app/data/ && \
+    echo "=================================="
+
 # ── Default environment (all services talk via localhost) ──────
 ENV STORAGE_TYPE=local \
     LOCAL_STORAGE_PATH=/app/data \
